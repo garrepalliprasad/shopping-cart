@@ -1,0 +1,42 @@
+﻿@model StripeList<Price>
+@{
+    ViewBag.Title = "List Of Prices Page";
+}
+@if (Model.Any())
+{
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Price</td>
+                <td>Billing Scheme</td>
+                <td>ProductId</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var price in Model)
+            {
+                <tr>
+                    <td>@price.Id</td>
+                    <td>@price.UnitAmountDecimal</td>
+                    <td>@price.BillingScheme</td>
+                    <td><a asp-controller="Product" asp-action="RetrieveProduct" asp-route-ProductId="@price.ProductId">@price.ProductId</a></td>
+                    <td><a asp-controller="Price" asp-action="RetrievePrice" asp-route-PriceId="@price.Id">View</a></td>
+                    <td><a asp-controller="Price" asp-action="UpdatePrice" asp-route-PriceId="@price.Id">Edit</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-text">
+                No Prices At the Moment
+            </h3>
+        </div>
+    </div>
+}

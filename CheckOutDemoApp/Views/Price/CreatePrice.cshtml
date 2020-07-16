@@ -1,0 +1,25 @@
+﻿@model Price
+@{ 
+    ViewBag.Title = "Product Price Page";
+}
+    <form asp-controller="Price" asp-action="CreatePrice">
+        <input type="hidden" asp-for="ProductId" />
+        <div class="card">
+            <div class="card-header">
+                Assign Product Price Here..
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label asp-for="UnitAmountDecimal"></label>
+                    <input asp-for="UnitAmountDecimal" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Currency"></label>
+                    <input asp-for="Currency" class="form-control"/>
+                </div>                
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">Assign</button>
+            </div>
+        </div>
+    </form>

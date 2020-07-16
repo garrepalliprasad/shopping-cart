@@ -1,0 +1,25 @@
+﻿@model Customer
+@{
+    ViewBag.Title = $"{Model.Name} Customer Details Were Deleted";
+}
+<div class="card">
+    <div class="card-header">
+        @Model.Name Details
+    </div>
+    <div class="card-body">
+        <h3>Email: @Model.Email</h3>
+        <h2>Phone: @Model.Phone</h2>
+        Address:
+        <span>
+            @Model.Address.Line1
+            @Model.Address.Line2
+            @Model.Address.City
+            @Model.Address.State
+            @Model.Address.Country
+        </span>
+        <h1>@Model.Description</h1>
+    </div>
+    <div class="card-footer">
+        <a asp-controller="Customer" asp-action="ListAllCustomers">Back to List</a>
+    </div>
+</div>

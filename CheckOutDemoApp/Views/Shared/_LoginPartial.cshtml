@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            @if (User.IsInRole("Shopadmin"))
+            {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" asp-controller="Product" asp-action="ListAllProducts">ListAllProducts</a>
+                        <a class="dropdown-item" asp-controller="Product" asp-action="CreateProduct">AddNewProduct</a>
+                    </div>
+                </li>                
+                <li class="nav-item">
+                    <a id="manage" class="nav-link text-dark">Hello Admin @UserManager.GetUserName(User)!</a>
+                </li>
+                <li class="nav-item">
+                    <form id="logoutForm" class="form-inline" asp-controller="Account" asp-action="Logout" method="post">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Product" asp-action="ProductsWithPrice">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a id="manage" class="nav-link text-dark">Hello @UserManager.GetUserName(User)!</a>
+                </li>
+                <li class="nav-item">
+                    <form id="logoutForm" class="form-inline" asp-controller="Account" asp-action="Logout" method="post">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+                <li class="nav-item mr-auto">
+                    <a class="nav-link text-danger" asp-controller="PaymentIntent" asp-action="ListAllPaymentIntents">ListAllTransactions</a>
+                </li>
+            }
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="register" asp-controller="Customer" asp-action="CreateCustomer">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="login" asp-controller="Account" asp-action="Login">Login</a>
+            </li>
+        }
+    </ul>

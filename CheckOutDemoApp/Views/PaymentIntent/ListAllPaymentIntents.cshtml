@@ -1,0 +1,26 @@
+﻿@model StripeList<PaymentIntent>
+@{
+    ViewBag.Title = "All Previous Transactions";
+}
+@if (Model.Any())
+{
+    foreach (var payment in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">@payment.Id</span>
+            </div>
+            <div class="card-body">
+                <span class="card-text">@payment.Status</span>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <span class="card-text">No Previous Transactions</span>
+        </div>
+    </div>
+}

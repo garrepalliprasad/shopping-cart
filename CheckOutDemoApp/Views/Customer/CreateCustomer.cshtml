@@ -1,0 +1,101 @@
+﻿@model CustomerViewModel
+@{
+    ViewBag.Title = "Customer creation Page";
+}
+<form method="post" asp-controller="Customer" asp-action="CreateCustomer">
+    <div class="card">
+        <div class="card-header">
+            Please Register Here..
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" required />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" required />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control" required />
+                <span asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <label asp-for="Address"></label>
+                    <div class="form-group row">
+                        <label asp-for="Address.Line1"></label>
+                        <input asp-for="Address.Line1" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Address.Line2"></label>
+                        <input asp-for="Address.Line2" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Address.City"></label>
+                        <input asp-for="Address.City" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Address.State"></label>
+                        <input asp-for="Address.State" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Address.Country"></label>
+                        <input asp-for="Address.Country" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Address.PostalCode"></label>
+                        <input asp-for="Address.PostalCode" class="form-control " />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-5">
+                    <label asp-for="Shipping"></label>
+                    <div class="form-group row">
+                        <label asp-for="Shipping.Address.Line1"></label>
+                        <input asp-for="Shipping.Address.Line1" class="form-control " />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Shipping.Address.Line2"></label>
+                        <input asp-for="Shipping.Address.Line2" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Shipping.Address.City"></label>
+                        <input asp-for="Shipping.Address.City" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Shipping.Address.State"></label>
+                        <input asp-for="Shipping.Address.State" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Shipping.Address.Country"></label>
+                        <input asp-for="Shipping.Address.Country" class="form-control" />
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Shipping.Address.PostalCode"></label>
+                        <input asp-for="Shipping.Address.PostalCode" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success">Create</button>
+        </div>
+    </div>
+</form>

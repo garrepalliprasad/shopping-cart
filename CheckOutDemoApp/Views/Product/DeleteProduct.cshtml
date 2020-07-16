@@ -1,0 +1,16 @@
+﻿@model Product
+@{
+    ViewBag.Title = $"{Model.Name} Product DeletePage";
+}
+<div class="card">
+    <div class="card-header">
+        @Model.Name is Deleted
+    </div>
+    <div class="card-body">
+        <h3>@(Model.Active?"Available":"Not Available")</h3>
+        <h4>@Model.Description</h4>
+    </div>
+    <div class="card-footer">
+        <a asp-controller="Product" asp-action="ListAllProducts">Back to List</a>
+    </div>
+</div>
